@@ -1,64 +1,63 @@
 /**
-21. Merge Two Sorted Lists
 
-Example:
+20. Valid Parentheses
 
-Input: 1->2->4, 1->3->4
-Output: 1->1->2->3->4->4
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
+An input string is valid if:
 
-合并 有序链表。
+1.Open brackets must be closed by the same type of brackets.
+2.Open brackets must be closed in the correct order.
 
-18、19、20 相对简单很多啊。
+判断是否闭合。采用入栈出栈的逻辑
 
 
  */
 
 
-class Solution_0020 {
-    fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
-        if (l1 == null && l2 == null) return null
+class Solution_20 {
+    fun isValid(s: String): Boolean {
+        if (s.isEmpty()) return true
+        else if (s.length % 2 != 0) return false
 
-        var header: ListNode? = null
-        var headerNext: ListNode? = null
-        var headerL1: ListNode? = l1
-        var headerL2: ListNode? = l2
+        var str = ""
 
-        while (headerL1 != null || headerL2 != null) {
-            var l1Value = headerL1?.`val`
-            var l2Value = headerL2?.`val`
-
-            var values: Int = Int.MAX_VALUE
-            if (l1Value != null && l2Value != null) {
-                values = if (l1Value <= l2Value) {
-                    headerL1 = headerL1?.next
-                    l1Value
-                } else {
-                    headerL2 = headerL2?.next
-                    l2Value
+        for (i in 0..(s.length - 1)) {
+            when (s[i]) {
+                '(', '[', '{' -> str += (s[i])
+                ')' -> {
+                    if (!str.isEmpty() && str.last() == '(') {
+                        str = str.dropLast(1)
+                    } else {
+                        return false
+                    }
                 }
-            } else if (l1Value != null) {
-                headerL1 = headerL1?.next
-                values = l1Value
-            } else if (l2Value != null) {
-                headerL2 = headerL2?.next
-                values = l2Value
-            }
-
-            if (values != Int.MAX_VALUE) {
-                if (header == null) {
-                    header = ListNode(values)
-                    headerNext = header
-                } else {
-                    headerNext?.next = ListNode(values)
-                    headerNext = headerNext?.next
+                ']' -> {
+                    if (!str.isEmpty() && str.last() == '[') {
+                        str = str.dropLast(1)
+                    } else {
+                        return false
+                    }
+                }
+                '}' -> {
+                    if (!str.isEmpty() && str.last() == '{') {
+                        str = str.dropLast(1)
+                    } else {
+                        return false
+                    }
                 }
             }
         }
-        return header
+        return str.isEmpty()
     }
-}
 
-class ListNode(var `val`: Int) {
-    var next: ListNode? = null
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            var obj = Solution_20()
+            print(obj.isValid("(){}"))
+            print("()".dropLast(1))
+            print("(".dropLast(1))
+        }
+    }
 }
