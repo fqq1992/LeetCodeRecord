@@ -17,7 +17,7 @@ After removing the second node from the end, the linked list becomes 1->2->3->5.
  */
 
 class Solution_0019 {
-    fun removeNthFromEnd(head: ListNode?, n: Int): ListNode? {
+    fun removeNthFromEnd(head: ListNode1?, n: Int): ListNode1? {
         if (head == null) return null
         var i = 0
         var returnHeader = head
@@ -50,11 +50,11 @@ class Solution_0019 {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            val header = ListNode(1)
-            var header1 = ListNode(2)
-            var header2 = ListNode(3)
-            var header3 = ListNode(4)
-            var header4 = ListNode(5)
+            val header = ListNode1(1)
+            var header1 = ListNode1(2)
+            var header2 = ListNode1(3)
+            var header3 = ListNode1(4)
+            var header4 = ListNode1(5)
             header.next = header1
             header1.next = header2
             header2.next = header3
@@ -69,8 +69,8 @@ class Solution_0019 {
 }
 
 
-class ListNode(var `val`: Int) {
-    var next: ListNode? = null
+class ListNode1(var `val`: Int) {
+    var next: ListNode1? = null
     override fun toString(): String {
         return `val`.toString() + next.let { next.toString() }
     }
