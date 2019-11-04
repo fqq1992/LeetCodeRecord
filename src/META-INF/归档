@@ -1,0 +1,57 @@
+鲸鱼小班：
+    整体架构介绍；
+    引入组件化的话题：Arouter/LiveData消息组建，接着讲怎么实现 优缺点 EventBus
+
+    Rxjava的常用操作符；
+    线程怎么到主线程；
+    多线程，通信；
+
+    List collection 主要方法；
+    常见的实现List、Map、Set； ArrayList LinkList HashCode底层实现。
+    equal 方法、HashCode关系，== 比的是地址。 hashCode的底层实现；
+
+
+
+
+
+梧桐车联：
+    AIDL, Client A conn Server B 的时候  A是 什么状态；返回bindle后 Server B 运行在什么线程里。
+    怎么实现 A/B 两个异步接口合并数据的问题。
+        rx merger. 手动实现，锁。或者用下述常见类。kotlin
+
+    线程常见工具类：
+        CountDownLatch 齐射，等待多线程执行完后，执行自己。
+        CyclicBarrier 屏障，传入参数N，等带N个线程阻塞后执行后续。可以传runnable优先执行。
+        Semaphore 信号量， 同时支持N个线程并发共享资源。
+
+    自定义View 图形混合。 setXfermode的 相关参数。 重叠部分的处理。
+
+    多进程的优劣。
+
+
+贵阳语聊：
+    数组实现队列。
+        参数表示起始下标 终止下标， 一定容量外的 抛异常。
+    通用的文件下载框架。
+        入口，URL、fileName、监听。
+        下载引擎，判断本地是否存在、线程池加载，通过临时命名法解决异常情况下的文件问题，http content-Length校验文件是否完整。
+        本地IO.
+
+
+镁佳科技：
+    3轮技术面均有手写算法之类。排序简单过一圈。
+    除开常见问题：优化的问题点可以有， Linux进程 与 Android进程的区别。
+    自定义ImageLoader框架。
+        ImageLoader入口，
+        ImageLoaderConfiguration通用配置：线程池/緩存大小/磁盤大小/日志
+        DisplayImageOptions：单个图片的错误图 默认图等。
+
+        上述对外接口。
+        下面是流程。
+        ImageLoader 入口
+            ↓
+        ImageEngine:分发任务到对应队列，
+            ↓
+        Cache  or Loader:获取具体数据 -->getData 区分 内存、磁盘、网络。
+            ↓
+        ImageDecoder：返回对应bitmap
