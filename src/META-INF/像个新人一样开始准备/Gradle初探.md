@@ -19,6 +19,7 @@ gradle一次完整的构建过程通常是三个部分。初始化、配置、�
 
 ```
 task testTask {
+    //读取配置时候 执行
     println 'testTask << print'
     // 表示在task最前面来执行的过程
     doFirst {
@@ -119,4 +120,18 @@ Task 声明创建有两种
     ![avatar](https://upload-images.jianshu.io/upload_images/2839011-28f3fb0ca3af7d9a.png)
     
 其次。gradle assembleRelease命令后执行任务会经历以下[流程](https://blog.csdn.net/kylewo/article/details/82632154)
+
+
+三、fat-aar-android 原理。
+    创建多个task。
+        按如下流程
+        embedAssets             //Merge Assets
+        embedLibraryResources   //res   合并。
+        embedJniLibs            // jni 拷贝。
+        embedManifests          //
+        generateRJava
+        embedJavaJars           //
+        
+    copy rename.
+        
     
