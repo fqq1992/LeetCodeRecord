@@ -17,7 +17,22 @@
 
           HashMap 底层是一个Node<K,V>[]数组，其中Node(hash(key),key,value,Next)链表。
                   位置由hash值决定，同一个hash位置上的node则组成链表。
+                  允许null当key.
 
           LinkedHashMap与HashMap的不同之处在于，LinkedHashMap维护者运行于所有条目的双重链接列表，此链接列表可以是插入顺序或者访问顺序
 
           WeakHashMap的特点：WeakHashMap是一种改进的HashMap，它对key实行“弱引用”，如果一个key不再被外部所引用，那么该key可以被GC回收。
+
+          IdentityHashMap特点：允许值key值一致。通过“==”判断对象的引用地址来判断。内部通过数组保存，偶数2n为Key,奇数2n+1为values。hash冲突时候 通过nextKeyIndex（）来解决。往后移动2个单位。
+                               remove的时候 1、查找引用相等的；找到之后 2、删除该元素 3、后，需要把原来有冲突往后移的元素移到前面来.
+
+    通过Collections.synchronizedMap（map）可以完成对线程同步map的创建。 内部是装饰者设计模式，在get、put、removed方法的地方加入锁。
+
+
+-——————
+
+        HashSet (java.util)
+        SortedSet (java.util)
+        AbstractSet (java.util)
+        KeySetView in ConcurrentHashMap (java.util.concurrent)
+        LinkedHashSet (java.util)
