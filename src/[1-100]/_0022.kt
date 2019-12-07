@@ -24,12 +24,19 @@ class Solution {
     fun generateParenthesis(n: Int): List<String> {
         var list = ArrayList<String>()
 
-        if (n == 1) {
-            list.add("()")
-        } else {
-
-        }
+        generateParenthesis(list, "", 0, 0, n)
 
         return list
+    }
+
+    fun generateParenthesis(lists: ArrayList<String>, string: String, open: Int, close: Int, max: Int) {
+        if (string.length == max * 2) {
+            lists.add(string)
+            return
+        }
+        if (open < max)
+            generateParenthesis(lists, string+"(", open + 1, close, max)
+        if (close < open)
+            generateParenthesis(lists, string + ")", open, close + 1, max)
     }
 }

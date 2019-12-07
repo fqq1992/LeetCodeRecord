@@ -117,7 +117,7 @@ Task 声明创建有两种
     
     编译-->DEX-->打包-->签名和对齐
     
-    ![avatar](https://upload-images.jianshu.io/upload_images/2839011-28f3fb0ca3af7d9a.png)
+   [编译流程如下](https://upload-images.jianshu.io/upload_images/2839011-28f3fb0ca3af7d9a.png)
     
 其次。gradle assembleRelease命令后执行任务会经历以下[流程](https://blog.csdn.net/kylewo/article/details/82632154)
 
