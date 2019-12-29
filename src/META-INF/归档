@@ -156,7 +156,8 @@
     4.启动模式。
     5、跨进程通讯几种方式。
     6、广播的底层原理。（PS：原理是使用观察者模式。1、receiver通过Binder机制向AMS注册。2、发送者binder向AMS发送广播。3、分发）
-    7、事件传递。事件传递过程中Activity的作用。（需要讲到activity-->window-->PhoneWindow(docketView ->rootViewImpl)-->WindowManagerGlobal-->IPC-->WindowManagerService...->surfaceflinger）
+    7、事件传递。事件传递过程中Activity的作用。（2019-12-29 这个答案有点问题。WindowManagerService --> inputMonitor-->inputManagerService。最后将IMS 跟 phoneWindow 绑定。
+                                                 需要讲到activity-->window-->PhoneWindow(docketView ->rootViewImpl)-->WindowManagerGlobal-->IPC-->WindowManagerService...->surfaceflinger）
     8、sp支持类型。（基本类型+String）
     9、MVP、MVVM的差异化。（注意点ViewModelProviders.of(this).get(ViewModel.class)）
     10、Https。 怎么校验证书（1、client 发出 随机数+支持的加密算法。2、server发出随机数+一种客户端加密算法+证书+非对称加密的公钥。3、客户端验证证书。新的随机数，通过公钥+加密方案传过去。4、服务端解密 利用前三个随机数 生成对称加密的key）
@@ -224,3 +225,29 @@
         OR  -->服务端发现资源已修改-->返回新的资源与标识。-->缓存相应结果。
 
         6、总共6个状态，分别为：NEW、RUNNABLE、BLOCKED、WAITING、TIMED_WAITING、TERMINATED。6个状态。
+
+
+字节
+
+    一面
+        1、消息总线、以及LiveData源码、粘性消息相关。 (对消息可以统一包装，在里面加个参数判断是否需要粘性消息。需要自己实现是否粘性)
+        2、HttpDNS相关 策略、更新策略、切换策略等。
+        3、应用主体框架。组件化、字符串定义消息总线 是否存在同步问题等；目前model拆分优化。
+        4、gradle 插件，提供AAR服务 以及相关的lib剔除功能。 task执行流程。
+        5、插件化 droibPlugin 原理。插桩 hook等原理。
+        6、疑难问题。
+        7、技术上挑战性的问题。
+
+        Java
+        1、强弱软虚引用。
+        2、内部类、匿名内部类、静态内部类相关。
+        3、Handler机制 消息。
+        4、触摸事件分发 inputManagerService。拦截响应机制。
+        5、测量。 requestLayout后，刷新View的时候 重绘全屏吗？
+        6、Java 虚拟机。类加载。
+        7、并发，AQS CAS 偏向锁，自旋锁等。
+
+        算法：
+        1、返回单链表的环入口节点。
+
+
