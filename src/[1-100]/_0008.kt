@@ -72,7 +72,7 @@ class Solution_0008 {
         do {
             if (str[index] in '0'..'9') {
                 var j = (str[index].toInt() - '0'.toInt())
-                if (x > Int.MAX_VALUE / 10 || (x == Int.MAX_VALUE / 10 && j >= Int.MAX_VALUE % 10))
+                if (x > Int.MAX_VALUE / 10 || (x == Int.MAX_VALUE / 10 && ((j >= Int.MAX_VALUE % 10 && sign > 0) || (j > Int.MAX_VALUE % 10 && sign < 0))))
                     return when (sign) {
                         1 -> Int.MAX_VALUE
                         else -> Int.MIN_VALUE
@@ -96,7 +96,8 @@ class Solution_0008 {
 //            println(obj.myAtoi("   -42"))
 //            println(obj.myAtoi("-91283472332"))
 //            println(obj.myAtoi("2147483646"))
-            println(obj.myAtoi("2147483648"))
+//            println(obj.myAtoi("2147483648"))
+            println(obj.myAtoi("-2147483647"))
 //            println(obj.myAtoi("  -0000091283472332"))
         }
     }
